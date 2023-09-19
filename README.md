@@ -1,34 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+  <a href="https://vitejs.dev/guide/" target="blank"><img src="https://github.com/Tzzent/chat-group-DC/assets/86677547/ddfc326f-7e1b-409a-933f-118de2a4944d" width="200" alt="NextJS" /></a>
+</p>
 
-## Getting Started
+<h1 align="center">ChatGroup Realtime | @Tzzent</h1>
 
-First, run the development server:
+<div align="center">
+  <h3>
+    <a target="_blank" href="https://chat-group-dc.vercel.app/channels">
+      Demo 🌐
+    </a>
+  </h3>
+</div>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+This application, which was made with NextJS + TS, is a mini-clone of Discord, where users can interact. I am also using NextJS Intercepted Routes.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+I still need to add the authentication by facebook so I will do it later. I am free of comments and criticism to continue improving.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Characteristics
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Responsive and easy to use interface
+- You can edit your account
+- You cannot delete your account entirely
+- You can change your profile picture
+- You can log out
+- You can create a channel
+- You can join or leave from a channel
+- You can search a channel
 
-## Learn More
+## Screenshots
 
-To learn more about Next.js, take a look at the following resources:
+🖥️ Desktop <br>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![Desk1](https://github.com/Tzzent/chat-group-DC/assets/86677547/0ced89fc-f007-48a1-aeda-2cf6f08f99e7)
+![Desk2](https://github.com/Tzzent/chat-group-DC/assets/86677547/f7f4c130-6618-494e-b0b9-fe91d3d19760)
+![Desk3](https://github.com/Tzzent/chat-group-DC/assets/86677547/7ddbdfbd-0d3d-4deb-967d-6e661caf60b8)
+![Desk](https://github.com/Tzzent/chat-group-DC/assets/86677547/4b6e14fa-c187-42a5-88a2-8fef346e531b)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<br>
+📲 Mobile <br><br>
 
-## Deploy on Vercel
+<div style="display: flex; justify-content: center;" align="center">
+  <img src="https://github.com/Tzzent/chat-group-DC/assets/86677547/e59657d1-da46-4192-b6f8-28ff5bb34b11" alt="Mobile-DC" width="300">
+</div>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contact 🗣️
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Instagram](https://www.instagram.com/tzzent/)
+- [Facebook](https://www.facebook.com/Tzzent/)
+- [Whatsapp](https://api.whatsapp.com/send?phone=+51900899785&text=Hola!%20Puedo%20realizar%20una%20consulta?)
