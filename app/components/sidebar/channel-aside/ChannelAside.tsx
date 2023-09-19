@@ -19,25 +19,31 @@ import { pusherClient } from '@/app/libs/pusher';
 import useChannel from '@/app/hooks/useChannel';
 
 export default function ChannelAside() {
-  const [channel, setChannel] = useState<FullChannelType | null>(null);
   const [confirmOpen, setConfirmOpen] = useState<boolean>(false);
-  const { toChannelsAside } = useSidebar();
-  const { selectedChannelId } = useSidebar();
+  const {
+    toChannelsAside,
+    selectedChannelId,
+    selectedChannel: channel,
+    setSelectedChannel,
+  } = useSidebar();
   const { channelId } = useChannel();
   const router = useRouter();
   const session = useSession();
 
   useEffect(() => {
     axios.get(`/api/channels/${selectedChannelId}`)
-      .then((response) => setChannel(response.data))
-      .catch((err) => setChannel(null));
-  }, [selectedChannelId]);
+      .then((response) => setSelectedChannel(response.data))
+      .catch((err) => console.log(err));
+  }, [
+    selectedChannelId,
+    setSelectedChannel,
+  ]);
 
   useEffect(() => {
     pusherClient.subscribe(channelId);
 
     const updateChannelHandler = (channel: FullChannelType) => {
-      setChannel(channel);
+      setSelectedChannel(channel);
     };
 
     pusherClient.bind(
@@ -53,18 +59,31 @@ export default function ChannelAside() {
         updateChannelHandler
       );
     }
-  }, [channelId]);
+  }, [
+    channelId,
+    setSelectedChannel,
+  ]);
 
   const handleJoinChannel = useCallback(() => {
+
+    if (session.status === 'unauthenticated') {
+      toast('Please login 👨🏼‍💻', {
+        duration: 1000,
+      });
+      return router.push('/auth');
+    }
+
     axios.put(`/api/channels/${selectedChannelId}/join`)
       .then((response) => {
         toast.success('You are now a member!');
-        setChannel(response.data);
+        setSelectedChannel(response.data);
         router.push(`/channels/${selectedChannelId}`);
       })
-      .catch((err) => setChannel(null));
+      .catch((err) => console.log(err));
   }, [
     selectedChannelId,
+    setSelectedChannel,
+    session.status,
     router,
   ]);
 
@@ -72,12 +91,13 @@ export default function ChannelAside() {
     axios.put(`/api/channels/${selectedChannelId}/leave`)
       .then((response) => {
         toast.success('You have left the channel!');
-        setChannel(response.data);
+        setSelectedChannel(response.data);
         router.push(`/channels/${selectedChannelId}`);
       })
-      .catch((err) => setChannel(null));
+      .catch((err) => console.log(err));
   }, [
     selectedChannelId,
+    setSelectedChannel,
     router,
   ]);
 

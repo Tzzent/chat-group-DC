@@ -49,7 +49,6 @@ export default function ChannelAddModal({
       onClose={onClose}
       className="
       bg-[#120F13]
-      max-w-xl
       "
     >
       <h1

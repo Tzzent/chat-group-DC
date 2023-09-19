@@ -1,5 +1,5 @@
 import getUserById from '@/app/actions/getUserById';
-import PageModal from '@/app/components/modals/PageModal';
+import Modal from '@/app/components/modals/Modal';
 import ProfileForm from './components/ProfileForm';
 
 interface IParams {
@@ -18,13 +18,11 @@ export default async function ProfileModal({
   }
 
   return (
-    <PageModal
-      className="
-      max-w-lg
-      bg-white
-      "
+    <Modal
+      className="bg-white"
+      isPageModal
     >
       <ProfileForm user={user} />
-    </PageModal>
+    </Modal>
   )
 }

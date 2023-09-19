@@ -7,34 +7,50 @@ import {
   MouseEventHandler,
 } from 'react';
 import clsx from 'clsx';
+import { useRouter } from 'next/navigation';
 
 interface ModalProps {
   isOpen?: boolean,
-  onClose: () => void,
+  isPageModal?: boolean,
+  onClose?: () => void,
   children: React.ReactNode,
   className?: string,
 }
 
 export default function Modal({
   isOpen,
+  isPageModal,
   children,
   onClose,
   className,
 }: ModalProps) {
   const overlay = useRef(null);
   const wrapper = useRef(null);
+  const router = useRouter();
+
+  const handleCloseModal = useCallback(() => {
+    if (isPageModal) {
+      router.back();
+    } else {
+      onClose && onClose();
+    }
+  }, [
+    isPageModal,
+    onClose,
+    router,
+  ]);
 
   const onClickOverlay: MouseEventHandler = useCallback((ev) => {
     if (ev.target === overlay.current || ev.target === wrapper.current) {
-      onClose();
+      handleCloseModal();
     }
-  }, [onClose]);
+  }, [handleCloseModal]);
 
   const onKeyDown = useCallback((ev: KeyboardEvent) => {
     if (ev.key === 'Escape') {
-      onClose();
+      handleCloseModal();
     }
-  }, [onClose]);
+  }, [handleCloseModal]);
 
   useEffect(() => {
     document.addEventListener(
@@ -54,29 +70,27 @@ export default function Modal({
       ref={overlay}
       onClick={onClickOverlay}
       className={clsx(`
-      w-screen
-      h-screen
-      fixed 
       flex
       justify-center
       items-center
-      z-10 
+      z-10
       inset-0
       mx-auto 
-      bg-black/50
+      bg-black/40
       `,
-        !isOpen && 'hidden'
+        isOpen || isPageModal ? 'flex' : 'hidden',
+        isPageModal ? 'absolute' : 'fixed',
       )}
     >
       <div
         ref={wrapper}
         className={clsx(`
-        m-5
         shadow-md
         px-8
         py-7
         rounded-3xl
         w-full
+        max-w-lg
         `,
           className,
         )}

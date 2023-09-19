@@ -46,6 +46,7 @@ export default function Item({
         className="
         font-semibold
         w-full
+        text-left
         "
       >
         {label}

@@ -101,9 +101,6 @@ export default function AuthForm({
         .catch((e) => toast.error(e?.response?.data))
         .finally(() => setIsLoading(false));
     }
-
-    console.log(data);
-    console.log(errors);
   };
 
 

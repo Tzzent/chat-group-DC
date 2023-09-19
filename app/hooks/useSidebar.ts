@@ -1,6 +1,7 @@
 'use client';
 
 import { create, } from 'zustand';
+import { FullChannelType } from '../types';
 
 export enum VIEWS {
   CHANNELS = 0,
@@ -11,6 +12,9 @@ interface SidebarState {
   view: VIEWS,
   toChannelsAside: () => void,
   toChannelAside: (channelId: string) => void,
+
+  selectedChannel: FullChannelType | null,
+  setSelectedChannel: (channel: FullChannelType) => void,
 
   selectedChannelId: string | null,
   isActive: boolean,
@@ -28,6 +32,9 @@ const useSidebar = create<SidebarState>()((set) => {
       view: VIEWS.SINGLE_CHANNEL,
       selectedChannelId: channelId
     })),
+
+    selectedChannel: null,
+    setSelectedChannel: (channel: FullChannelType) => set(() => ({ selectedChannel: channel })),
 
     selectedChannelId: null,
     isActive: false,

@@ -18,6 +18,12 @@ export async function POST(
       throw { message: 'Invalid credentials', status: 400 };
     }
 
+    const emailRegex = /^[a-zA-Z0-9._-]+@(gmail|hotmail|outlook|yahoo|aol)\.com$/;
+
+    if (emailRegex.test(email.toLowerCase())) {
+      throw { message: 'Invalid email address', status: 400 };
+    }
+
     const hashedPassword = await bcrypt.hash(password, 12);
 
     const user = await prisma.user.create({

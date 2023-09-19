@@ -26,6 +26,7 @@ export default function Avatar({
     >
       <Image
         fill
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 640px, 1000px"
         alt="Avatar"
         src={user?.image || '/images/placeholder.jpg'}
       />

@@ -36,14 +36,14 @@ export function Sidebar({
       flex
       "
     >
-      <div
+      <div //-> This is the overlay
         onClick={closeSidebar}
         className={clsx(`
         fixed 
         inset-0 
         bg-gradient-to-r 
         from-slate-950
-        md:hidden
+        xl:hidden
         z-10
         `,
           !isActive && 'hidden'
@@ -96,7 +96,7 @@ export function Sidebar({
             />
           )
         }
-        {(view === VIEWS.SINGLE_CHANNEL && isActive) &&
+        {(view === VIEWS.SINGLE_CHANNEL) &&
           (
             <ChannelAside />
           )

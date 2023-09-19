@@ -1,10 +1,12 @@
 import AuthForm from '@/app/auth/components/AuthForm';
-import PageModal from '@/app/components/modals/PageModal';
+import Modal from '@/app/components/modals/Modal';
 
 export default function AuthModal() {
   return (
-    <PageModal>
+    <Modal
+      isPageModal
+    >
       <AuthForm renderingInModal />
-    </PageModal>
+    </Modal>
   )
 }

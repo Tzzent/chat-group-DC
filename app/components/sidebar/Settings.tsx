@@ -8,7 +8,6 @@ import { MdOutlineLogout } from 'react-icons/md';
 import { Transition } from '@headlessui/react';
 import { useRouter } from 'next/navigation';
 import { User } from '@prisma/client';
-import OutsideClickHandler from 'react-outside-click-handler';
 import { toast } from 'react-hot-toast';
 
 import SettingsItem, { SettingsItemProps } from './SettingsItem';
@@ -75,23 +74,21 @@ export default forwardRef<HTMLDivElement, SettingsProps>(function Settings({
       border-gray-700
       "
     >
-      <OutsideClickHandler onOutsideClick={() => onClose()}>
-        <Transition.Child
-          as="div"
-          className="
+      <Transition.Child
+        as="div"
+        className="
           flex
           flex-col
           gap-y-2
           "
-        >
-          {settingsList.map((item) => (
-            <SettingsItem
-              key={item.label}
-              {...item}
-            />
-          ))}
-        </Transition.Child>
-      </OutsideClickHandler>
+      >
+        {settingsList.map((item) => (
+          <SettingsItem
+            key={item.label}
+            {...item}
+          />
+        ))}
+      </Transition.Child>
     </Transition>
   )
 });
